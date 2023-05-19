@@ -1,11 +1,13 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../Peripheral/InputFields.dart';
+import '../../../../Peripheral/InputFields.dart';
 
-class EditProfile extends StatelessWidget {
-  const EditProfile({Key? key}) : super(key: key);
+class AddACar extends StatelessWidget {
+  const AddACar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class EditProfile extends StatelessWidget {
                     size: 30,
                   ),
                   Spacer(),
-                  Text('Edit Profile',
+                  Text('Add a car',
                     style: GoogleFonts.dmSans(
                       fontSize: 25,
                       color: Colors.blue,
@@ -32,30 +34,19 @@ class EditProfile extends StatelessWidget {
                 ],
               ),
             ),
+            Spacer(),
             Container(
-              height: 200,
-              width: 200,
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(100)),
-                border: Border.all(color: Colors.black),
-                image: DecorationImage(
-                    image: NetworkImage('https://illustoon.com/photo/thum/9483.png'),
-                    fit: BoxFit.cover),
-              ),
-            ),
-            Text('Change Photo',
-              style: GoogleFonts.dmSans(
-                decoration: TextDecoration.underline,
-                fontSize: 30,
-                color: Colors.black,
-                // fontWeight: FontWeight.bold
-              ),
+              height: 100,
+              child: Image.network('https://illustoon.com/photo/thum/9483.png'),
             ),
             Spacer(),
-            inputField("First Name"),
+            inputField("What is your car brand?"),
             SizedBox(height: 20,),
-            inputField("Last Name"),
+            inputField("What is your car model?"),
+            Spacer(),
+            inputField("What is the color of your car?"),
+            Spacer(),
+            inputField("What is your registration number"),
             Spacer(),
             Container(
               width: MediaQuery.of(context).size.width * 0.6,
@@ -65,7 +56,7 @@ class EditProfile extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(30))
               ),
               child: Center(
-                child: Text('Save Changes',
+                child: Text('Confirm',
                   style: GoogleFonts.dmSans(
                     fontSize: 30,
                     color: Colors.white,

@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../Peripheral/InputFields.dart';
+import '../../../Peripheral/InputFields.dart';
 
-class SelectACar extends StatelessWidget {
-  const SelectACar({Key? key}) : super(key: key);
+class RideHistory extends StatelessWidget {
+  const RideHistory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class SelectACar extends StatelessWidget {
                     size: 30,
                   ),
                   Spacer(),
-                  Text('Select a car',
+                  Text('History of Rides',
                     style: GoogleFonts.dmSans(
                       fontSize: 25,
                       color: Colors.blue,
@@ -35,7 +35,7 @@ class SelectACar extends StatelessWidget {
             SizedBox(height: 40,),
             Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 30),
                 child: ListView(
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.vertical,

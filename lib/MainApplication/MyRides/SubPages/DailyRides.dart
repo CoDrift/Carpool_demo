@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../Peripheral/InputFields.dart';
+import '../../../Peripheral/InputFields.dart';
 
-class SelectACar extends StatelessWidget {
-  const SelectACar({Key? key}) : super(key: key);
+class DailyRides extends StatelessWidget {
+  const DailyRides({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,23 @@ class SelectACar extends StatelessWidget {
                     size: 30,
                   ),
                   Spacer(),
-                  Text('Select a car',
-                    style: GoogleFonts.dmSans(
-                      fontSize: 25,
-                      color: Colors.blue,
-                      // fontWeight: FontWeight.bold
-                    ),
+                  Column(
+                    children: [
+                      Text('Daily',
+                        style: GoogleFonts.dmSans(
+                          fontSize: 15,
+                          color: Colors.blue,
+                          // fontWeight: FontWeight.bold
+                        ),
+                      ),
+                      Text('Rides',
+                        style: GoogleFonts.dmSans(
+                          fontSize: 15,
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ],
                   ),
                   Spacer(),
                 ],
@@ -35,22 +46,22 @@ class SelectACar extends StatelessWidget {
             SizedBox(height: 40,),
             Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 30),
                 child: ListView(
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   children: <Widget>[
-                    HistoryRideCard(context),
+                    RideCard(context),
                     SizedBox(height: 20,),
-                    HistoryRideCard(context),
+                    RideCard(context),
                     SizedBox(height: 20,),
-                    HistoryRideCard(context),
+                    RideCard(context),
                     SizedBox(height: 20,),
-                    HistoryRideCard(context),
+                    RideCard(context),
                     SizedBox(height: 20,),
-                    HistoryRideCard(context),
+                    RideCard(context),
                     SizedBox(height: 20,),
-                    HistoryRideCard(context),
+                    RideCard(context),
                   ],
                 ),
               ),

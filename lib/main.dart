@@ -1,5 +1,11 @@
-import 'package:carpool_fyp22/AccountManagement/Intro.dart';
+import 'package:carpool_fyp22/MainApplication/Home/SubPages/PostRide.dart';
+import 'package:carpool_fyp22/MainApplication/Home/SubPages/RideStart/SelectACar.dart';
+import 'package:carpool_fyp22/MainApplication/MainPage.dart';
+import 'package:carpool_fyp22/Peripheral/RateYourRide.dart';
 import 'package:flutter/material.dart';
+
+import 'MainApplication/Home/SubPages/ConfirmRide.dart';
+import 'MainApplication/MyRides/SubPages/RideInfo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +31,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const Intro(),
+      home: const RideInfo(),
     );
   }
 }
