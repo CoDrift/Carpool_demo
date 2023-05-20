@@ -43,6 +43,56 @@ inputField(String title) {
   );
 }
 
+SearchField(String title) {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 30),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          height: 65,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10)
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Row(
+            children: [
+              SizedBox(width: 5,),
+              Expanded(
+                child: Text(title,
+                  textAlign: TextAlign.left,
+                  style: GoogleFonts.dmSans(
+                    fontSize: 18,
+                    color: Colors.black,
+                    // fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+              Icon(Icons.search, size: 30,),
+              SizedBox(width: 10,),
+            ],
+          ),
+        )
+      ],
+    ),
+  );
+}
+
 SimpleSelector(String title, Color mainColor) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 30),

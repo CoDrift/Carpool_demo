@@ -5,6 +5,7 @@ import 'package:carpool_fyp22/Peripheral/RateYourRide.dart';
 import 'package:flutter/material.dart';
 
 import 'MainApplication/Home/SubPages/ConfirmRide.dart';
+import 'MainApplication/Home/SubPages/RideStart/SelectDeparture.dart';
 import 'MainApplication/MyRides/SubPages/RideInfo.dart';
 
 void main() {
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const RideInfo(),
+      home: SelectDepart(),
     );
   }
 }
