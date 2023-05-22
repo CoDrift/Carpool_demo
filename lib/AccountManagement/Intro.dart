@@ -1,6 +1,9 @@
+import 'package:carpool_fyp22/AccountManagement/Login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'SignUp.dart';
 
 class Intro extends StatelessWidget {
   const Intro({Key? key}) : super(key: key);
@@ -28,8 +31,16 @@ class Intro extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.all(60),
-              child: Image.network('https://illustoon.com/photo/thum/9483.png'),
+              child: Image.network('https://i.imgur.com/sUVVvQi.png'),
             ),
+            // Text('DEMO MADE BY\nMUHAMMAD ARSLAN\n201298',
+            //   textAlign: TextAlign.center,
+            //   style: GoogleFonts.dmSans(
+            //     fontSize: 30,
+            //     color: Colors.black,
+            //     // fontWeight: FontWeight.bold
+            //   ),
+            // ),
             Spacer(),
             Container(
               width: MediaQuery.of(context).size.width * 0.6,
@@ -38,12 +49,20 @@ class Intro extends StatelessWidget {
                 color: Colors.blue,
                 borderRadius: BorderRadius.all(Radius.circular(30))
               ),
-              child: Center(
-                child: Text('GO',
-                  style: GoogleFonts.dmSans(
-                    fontSize: 30,
-                    color: Colors.white,
-                    // fontWeight: FontWeight.bold
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Login()),
+                  );
+                },
+                child: Center(
+                  child: Text('GO',
+                    style: GoogleFonts.dmSans(
+                      fontSize: 30,
+                      color: Colors.white,
+                      // fontWeight: FontWeight.bold
+                    ),
                   ),
                 ),
               ),

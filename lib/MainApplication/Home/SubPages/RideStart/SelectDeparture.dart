@@ -1,3 +1,5 @@
+import 'package:carpool_fyp22/MainApplication/Home/SubPages/RideStart/SearchDeparture.dart';
+import 'package:carpool_fyp22/MainApplication/Home/SubPages/RideStart/SelectDestination.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -65,7 +67,7 @@ class _SelectDepartState extends State<SelectDepart> {
                     size: 30,
                   ),
                   Spacer(),
-                  Text('Edit Profile',
+                  Text('Select departure',
                     style: GoogleFonts.dmSans(
                       fontSize: 25,
                       color: Colors.blue,
@@ -104,23 +106,32 @@ class _SelectDepartState extends State<SelectDepart> {
                 ),
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.all(Radius.circular(30))
-              ),
-              child: Center(
-                child: Text('Next',
-                  style: GoogleFonts.dmSans(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchDeparture()),
+                  );
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.all(Radius.circular(30))
+                  ),
+                  child: Center(
+                    child: Text('Next',
+                      style: GoogleFonts.dmSans(
+                          fontSize: 30,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
                   ),
                 ),
-              ),
             ),
+
             SizedBox(height: 50,),
           ],
         ),

@@ -1,3 +1,7 @@
+import 'package:carpool_fyp22/MainApplication/Home/ListRides.dart';
+import 'package:carpool_fyp22/MainApplication/Home/SubPages/ConfirmRide.dart';
+import 'package:carpool_fyp22/MainApplication/Home/SubPages/RideStart/SelectDeparture.dart';
+import 'package:carpool_fyp22/MainApplication/Home/SubPages/RideStart/ShareRideAvailability.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +10,13 @@ import '../../../Peripheral/InputFields.dart';
 
 class HomeHandler extends StatelessWidget {
   const HomeHandler({Key? key}) : super(key: key);
+
+  transferPage(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ConfirmRide()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,54 +60,70 @@ class HomeHandler extends StatelessWidget {
               Row(
                 children: [
                   Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.green,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SelectDepart()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.green,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(10),
-                    child: Center(
-                      child: Text('Find a ride',
-                        style: GoogleFonts.dmSans(
-                          fontSize: 15,
-                          color: Colors.white,
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
+                        child: Center(
+                          child: Text('Find a ride',
+                            style: GoogleFonts.dmSans(
+                              fontSize: 15,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
                   ),
                   Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.green,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ShareRideAvailability()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.green,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(10),
-                    child: Center(
-                      child: Text('Find a ride',
-                        style: GoogleFonts.dmSans(
-                          fontSize: 15,
-                          color: Colors.white,
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
+                        child: Center(
+                          child: Text('Post a ride',
+                            style: GoogleFonts.dmSans(
+                              fontSize: 15,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
                   ),
                   Spacer(),
                 ],
@@ -121,22 +148,18 @@ class HomeHandler extends StatelessWidget {
               Expanded(
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 30),
-                  child: ListView(
+                  child: ListView.builder(
+                    itemCount: RidesList.length,
                     physics: BouncingScrollPhysics(),
                     scrollDirection: Axis.vertical,
-                    children: <Widget>[
-                      AvailableRideCard(context),
-                      SizedBox(height: 20,),
-                      AvailableRideCard(context),
-                      SizedBox(height: 20,),
-                      AvailableRideCard(context),
-                      SizedBox(height: 20,),
-                      AvailableRideCard(context),
-                      SizedBox(height: 20,),
-                      AvailableRideCard(context),
-                      SizedBox(height: 20,),
-                      AvailableRideCard(context),
-                    ],
+                    itemBuilder: (BuildContext context, int index) {
+                      return Column(
+                        children: [
+                          AvailableRideCard(context, () {transferPage(context);}, RidesList[index].Model, RidesList[index].From, RidesList[index].To, RidesList[index].Day, RidesList[index].TND),
+                          SizedBox(height: 20,),
+                        ],
+                      );
+                    },
                   ),
                 ),
               ),

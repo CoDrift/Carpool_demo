@@ -7,7 +7,12 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../Peripheral/InputFields.dart';
 
 class AddACar extends StatelessWidget {
-  const AddACar({Key? key}) : super(key: key);
+  AddACar({Key? key}) : super(key: key);
+
+  TextEditingController brand = new TextEditingController();
+  TextEditingController model = new TextEditingController();
+  TextEditingController regNo = new TextEditingController();
+  TextEditingController color = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +42,16 @@ class AddACar extends StatelessWidget {
             Spacer(),
             Container(
               height: 100,
-              child: Image.network('https://illustoon.com/photo/thum/9483.png'),
+              child: Image.network('https://i.imgur.com/pltnpr3.png'),
             ),
             Spacer(),
-            inputField("What is your car brand?"),
+            inputField("What is your car brand?", brand, false),
             SizedBox(height: 20,),
-            inputField("What is your car model?"),
+            inputField("What is your car model?", model, false),
             Spacer(),
-            inputField("What is the color of your car?"),
+            inputField("What is the color of your car?", color, false),
             Spacer(),
-            inputField("What is your registration number"),
+            inputField("What is your registration number", regNo, false),
             Spacer(),
             Container(
               width: MediaQuery.of(context).size.width * 0.6,

@@ -1,5 +1,12 @@
+import 'package:carpool_fyp22/AccountManagement/Intro.dart';
+import 'package:carpool_fyp22/AccountManagement/SharedPref.dart';
+import 'package:carpool_fyp22/MainApplication/MyRides/RideHandler.dart';
+import 'package:carpool_fyp22/MainApplication/Profile/SubPages/EditProfile.dart';
+import 'package:carpool_fyp22/MainApplication/Profile/SubPages/MyCarInfo.dart';
+import 'package:carpool_fyp22/MainApplication/Profile/SubPages/RideHistory.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Peripheral/InputFields.dart';
 
@@ -21,7 +28,7 @@ class ProfileHandler extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(100)),
                 border: Border.all(color: Colors.black),
                 image: DecorationImage(
-                    image: NetworkImage('https://illustoon.com/photo/thum/9483.png'),
+                    image: NetworkImage('https://i.imgur.com/RHZkoW5.png'),
                     fit: BoxFit.cover),
               ),
             ),
@@ -33,15 +40,41 @@ class ProfileHandler extends StatelessWidget {
               ),
             ),
             SizedBox(height: 50,),
-            SimpleSelector("My personal information", Colors.black),
+            SimpleSelector("My personal information", Colors.black, () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EditProfile()),
+              );
+            }),
             SizedBox(height: 50,),
-            SimpleSelector("My car information", Colors.black),
+            SimpleSelector("My car information", Colors.black, () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyCarInfo()),
+              );
+            }),
             SizedBox(height: 50,),
-            SimpleSelector("My rides schedule", Colors.black),
+            SimpleSelector("My rides schedule", Colors.black, () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RideHandler()),
+              );
+            }),
             SizedBox(height: 50,),
-            SimpleSelector("My history", Colors.black),
+            SimpleSelector("My history", Colors.black, () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RideHistory()),
+              );
+            }),
             SizedBox(height: 50,),
-            SimpleSelector("Logout", Colors.purple[700]!),
+            SimpleSelector("Logout", Colors.purple[700]!, () {
+              SharedPref.clear();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Intro()),
+              );
+            }),
           ],
         ),
       ),

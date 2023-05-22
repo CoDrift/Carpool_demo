@@ -1,3 +1,4 @@
+import 'package:carpool_fyp22/MainApplication/MainPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,7 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../Peripheral/InputFields.dart';
 
 class RideInfo extends StatelessWidget {
-  const RideInfo({Key? key}) : super(key: key);
+  const RideInfo({Key? key, required this.Departure, required this.Destination}) : super(key: key);
+
+  final String Departure;
+  final String Destination;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +21,13 @@ class RideInfo extends StatelessWidget {
               margin: EdgeInsets.all(10),
               child: Row(
                 children: [
-                  Icon(Icons.arrow_back,
-                    size: 30,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back,
+                      size: 30,
+                    ),
                   ),
                   Spacer(),
                   Text('Your ride',
@@ -47,7 +56,7 @@ class RideInfo extends StatelessWidget {
                   Spacer(),
                   Column(
                     children: [
-                      Text('BMW',
+                      Text('Toyota Corolla',
                         style: GoogleFonts.dmSans(
                             fontSize: 20,
                             color: Colors.black,
@@ -55,19 +64,19 @@ class RideInfo extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 20,),
-                      Text('bdbdbdbdbdbd',
+                      Text('Blue',
                         style: GoogleFonts.dmSans(
                           fontSize: 20,
                           color: Colors.black,
                         ),
                       ),
-                      Text('bdbdbdbd',
+                      Text('CHG 746',
                         style: GoogleFonts.dmSans(
                           fontSize: 20,
                           color: Colors.black,
                         ),
                       ),
-                      Text('Rs. XXXX',
+                      Text('Rs. 3260',
                         style: GoogleFonts.dmSans(
                             fontSize: 20,
                             color: Colors.black,
@@ -95,7 +104,7 @@ class RideInfo extends StatelessWidget {
                       ),
                       children: <TextSpan>[
                         TextSpan(text: 'Pick up: '),
-                        TextSpan(text: '4/12/2022 at 6:00 PM at XYZ', style: const TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: '4/12/2022 at 6:00 PM at ${Departure}', style: const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -118,7 +127,7 @@ class RideInfo extends StatelessWidget {
                       ),
                       children: <TextSpan>[
                         TextSpan(text: 'Drop off: '),
-                        TextSpan(text: '6/12/2022 at 6:00 PM at XYZ', style: const TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: '6/12/2022 at 6:00 PM at ${Destination}', style: const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -141,7 +150,7 @@ class RideInfo extends StatelessWidget {
                       ),
                       children: <TextSpan>[
                         TextSpan(text: 'Amount to be paid: '),
-                        TextSpan(text: 'XXXX PKR', style: const TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: '3260 PKR', style: const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -202,7 +211,7 @@ class RideInfo extends StatelessWidget {
                       ),
                       children: <TextSpan>[
                         TextSpan(text: 'Contact Number: '),
-                        TextSpan(text: '22 222 222', style: const TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: '+92 346 1326481', style: const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -211,22 +220,30 @@ class RideInfo extends StatelessWidget {
               ],
             ),
             Spacer(),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.all(Radius.circular(35))
-              ),
-              child: Center(
-                child: Text('Done',
-                  style: GoogleFonts.dmSans(
-                    fontSize: 30,
-                    color: Colors.white,
-                    // fontWeight: FontWeight.bold
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainPage()),
+                  );
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                  child: Center(
+                    child: Text('Done',
+                      style: GoogleFonts.dmSans(
+                        fontSize: 30,
+                        color: Colors.white,
+                        // fontWeight: FontWeight.bold
+                      ),
+                    ),
                   ),
                 ),
-              ),
             ),
             SizedBox(height: 50,),
           ],

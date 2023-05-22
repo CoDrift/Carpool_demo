@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:carpool_fyp22/MainApplication/MyRides/RideHandler.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,7 +8,12 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../Peripheral/InputFields.dart';
 
 class ShareRideAvailability extends StatelessWidget {
-  const ShareRideAvailability({Key? key}) : super(key: key);
+  ShareRideAvailability({Key? key}) : super(key: key);
+
+  TextEditingController from = new TextEditingController();
+  TextEditingController to = new TextEditingController();
+  TextEditingController time = new TextEditingController();
+  TextEditingController date = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +25,13 @@ class ShareRideAvailability extends StatelessWidget {
               margin: EdgeInsets.all(10),
               child: Row(
                 children: [
-                  Icon(Icons.arrow_back,
-                    size: 30,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back,
+                      size: 30,
+                    ),
                   ),
                   Spacer(),
                   Text('Share ride availability',
@@ -35,51 +46,64 @@ class ShareRideAvailability extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20,),
-            inputField("From where?"),
+            inputField("From where?", from, false),
             SizedBox(height: 20,),
-            inputField("To where?"),
+            inputField("To where?", to, false),
             SizedBox(height: 20,),
-            inputField("What time?"),
+            inputField("What time?", time, false),
             SizedBox(height: 20,),
-            inputField("What date?"),
+            inputField("What date?", date, false),
             Spacer(),
             Row(
               children: [
                 Spacer(),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.all(Radius.circular(30))
-                  ),
-                  child: Center(
-                    child: Text('Deny',
-                      style: GoogleFonts.dmSans(
-                        fontSize: 16,
-                        color: Colors.white,
-                        // fontWeight: FontWeight.bold
+                GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.all(Radius.circular(30))
+                      ),
+                      child: Center(
+                        child: Text('Deny',
+                          style: GoogleFonts.dmSans(
+                            fontSize: 16,
+                            color: Colors.white,
+                            // fontWeight: FontWeight.bold
+                          ),
+                        ),
                       ),
                     ),
-                  ),
                 ),
                 Spacer(),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.all(Radius.circular(30))
-                  ),
-                  child: Center(
-                    child: Text('Confirm',
-                      style: GoogleFonts.dmSans(
-                        fontSize: 16,
-                        color: Colors.white,
-                        // fontWeight: FontWeight.bold
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RideHandler()),
+                      );
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.all(Radius.circular(30))
+                      ),
+                      child: Center(
+                        child: Text('Confirm',
+                          style: GoogleFonts.dmSans(
+                            fontSize: 16,
+                            color: Colors.white,
+                            // fontWeight: FontWeight.bold
+                          ),
+                        ),
                       ),
                     ),
-                  ),
                 ),
                 Spacer(),
               ],

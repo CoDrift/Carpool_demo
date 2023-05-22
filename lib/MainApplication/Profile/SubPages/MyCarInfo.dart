@@ -34,7 +34,7 @@ class MyCarInfo extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.all(60),
-              child: Image.network('https://illustoon.com/photo/thum/9483.png'),
+              child: Image.network('https://i.imgur.com/oYICZ0K.png'),
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),

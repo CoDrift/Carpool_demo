@@ -1,3 +1,5 @@
+import 'package:carpool_fyp22/MainApplication/Home/SubPages/RideStart/SearchDestination.dart';
+import 'package:carpool_fyp22/MainApplication/MyRides/SubPages/RideInfo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,7 +10,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../../Peripheral/InputFields.dart';
 
 class SelectDestination extends StatefulWidget {
-  SelectDestination({Key? key}) : super(key: key);
+
+  final String Departure;
+
+  SelectDestination({Key? key, required this.Departure}) : super(key: key);
 
   @override
   State<SelectDestination> createState() => _SelectDestinationState();
@@ -65,7 +70,7 @@ class _SelectDestinationState extends State<SelectDestination> {
                     size: 30,
                   ),
                   Spacer(),
-                  Text('Edit Profile',
+                  Text('Select destination',
                     style: GoogleFonts.dmSans(
                       fontSize: 25,
                       color: Colors.blue,
@@ -104,22 +109,30 @@ class _SelectDestinationState extends State<SelectDestination> {
                 ),
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.all(Radius.circular(30))
-              ),
-              child: Center(
-                child: Text('Next',
-                  style: GoogleFonts.dmSans(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchDestination(departure: widget.Departure)),
+                  );
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.all(Radius.circular(30))
+                  ),
+                  child: Center(
+                    child: Text('Next',
+                      style: GoogleFonts.dmSans(
+                          fontSize: 30,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
                   ),
                 ),
-              ),
             ),
             SizedBox(height: 50,),
           ],

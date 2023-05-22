@@ -18,13 +18,13 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.grey);
   static List<Widget> _widgetOptions = <Widget>[
-    RideHistory(),
+    RideHandler(),
     HomeHandler(),
-    RideHistory(),
+    ProfileHandler(),
   ];
 
   void _onItemTapped(int index) {

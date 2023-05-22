@@ -17,8 +17,13 @@ class DailyRides extends StatelessWidget {
               margin: EdgeInsets.all(10),
               child: Row(
                 children: [
-                  Icon(Icons.arrow_back,
-                    size: 30,
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(Icons.arrow_back,
+                        size: 30,
+                      ),
                   ),
                   Spacer(),
                   Column(

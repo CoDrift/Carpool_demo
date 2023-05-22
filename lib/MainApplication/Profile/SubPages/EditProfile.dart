@@ -5,7 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../Peripheral/InputFields.dart';
 
 class EditProfile extends StatelessWidget {
-  const EditProfile({Key? key}) : super(key: key);
+  EditProfile({Key? key}) : super(key: key);
+
+  TextEditingController Fname = new TextEditingController();
+  TextEditingController LName = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +20,13 @@ class EditProfile extends StatelessWidget {
               margin: EdgeInsets.all(10),
               child: Row(
                 children: [
-                  Icon(Icons.arrow_back,
-                    size: 30,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back,
+                      size: 30,
+                    ),
                   ),
                   Spacer(),
                   Text('Edit Profile',
@@ -40,7 +48,7 @@ class EditProfile extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(100)),
                 border: Border.all(color: Colors.black),
                 image: DecorationImage(
-                    image: NetworkImage('https://illustoon.com/photo/thum/9483.png'),
+                    image: NetworkImage('https://i.imgur.com/RHZkoW5.png'),
                     fit: BoxFit.cover),
               ),
             ),
@@ -53,9 +61,9 @@ class EditProfile extends StatelessWidget {
               ),
             ),
             Spacer(),
-            inputField("First Name"),
+            inputField("First Name", Fname, false),
             SizedBox(height: 20,),
-            inputField("Last Name"),
+            inputField("Last Name", LName, false),
             Spacer(),
             Container(
               width: MediaQuery.of(context).size.width * 0.6,
