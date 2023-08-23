@@ -1,6 +1,6 @@
-# carpool_fyp22
+# carpool_demo
 
-Carpool for FYP 2022
+Carpool for client on Fiverr
 
 ## Getting Started
 
